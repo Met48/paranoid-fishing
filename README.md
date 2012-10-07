@@ -1,6 +1,8 @@
 Unnamed Game Prototype
 ================
 
+This is a WIP game. It does not run yet!
+
 To setup:
 
 1. Download SFML 2.0 and extract to ./sfml
