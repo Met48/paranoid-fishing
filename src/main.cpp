@@ -1,23 +1,28 @@
 #include <SFML/Graphics.hpp>
 
+#include "Game.h"
+
+
+#include "Entity.h"
+#include "Vector2Attribute.h"
+#include "DrawSpriteBehavior.h"
+#include <memory>
+
 // Tutorial SFML test script
 int main() {
-    sf::RenderWindow window(sf::VideoMode(200, 200), "SFML works!");
-    sf::CircleShape shape(100.f);
-    shape.setFillColor(sf::Color::Green);
+    Game game(200, 200, "Game Prototype");
+    // TODO: Revise getWindow form
+    game.getWindow()->setKeyRepeatEnabled(false);  // TODO: This disables repeat for KeyPressed, but does it affect TextEntered?
+    game.getWindow()->setFramerateLimit(30);
 
-    while (window.isOpen())
-    {
-        sf::Event event;
-        while (window.pollEvent(event))
-        {
-            if (event.type == sf::Event::Closed)
-                window.close();
-        }
+    // Add example entity
+    auto ent = std::make_shared<Entity>();
+    ent->addAttribute("position", new Vector2Attribute(&*ent,0, 0));
+    ent->addBehavior(new DrawSpriteBehavior(&*ent, "test.png"));
 
-        window.clear();
-        window.draw(shape);
-        window.display();
-    }
+    game.addEntity(ent);
+
+    // Start game loop
+    game.start();
 	return 0;
 }

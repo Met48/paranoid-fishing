@@ -20,10 +20,12 @@ obj/*
 *.vcxproj
 *.vcxproj.filters
 *.vcxproj.user
+ipch/*
 
 # Dependencies
 sfml/*
 
 # Built Windows Program
+bin/*
 *.exe
 *.dll
