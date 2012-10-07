@@ -1,4 +1,5 @@
 # Compiled Object files
+obj/*
 *.slo
 *.lo
 *.o
@@ -10,3 +11,19 @@
 *.lai
 *.la
 *.a
+
+# Visual studio
+*.sln
+*.suo
+*.opensdf
+*.sdf
+*.vcxproj
+*.vcxproj.filters
+*.vcxproj.user
+
+# Dependencies
+sfml/*
+
+# Built Windows Program
+*.exe
+*.dll
