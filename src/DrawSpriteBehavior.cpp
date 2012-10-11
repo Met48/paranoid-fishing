@@ -19,11 +19,8 @@ void DrawSpriteBehavior::setImage(sf::Sprite sprite) {
     sprite_ = sprite;
 }
 
-void DrawSpriteBehavior::processEvent(Event *ev) {
-    // TODO: This comparison will not work as expected
-    //   dynamic_cast is also not an option
-    //   perhaps use an event binding system?
-    if (typeid(*ev) == typeid(DrawEvent)) {
+void DrawSpriteBehavior::processEvent(const std::type_info &type, Event *ev) {
+    if (type == typeid(DrawEvent)) {
         DrawEvent *ev2 = static_cast<DrawEvent*>(ev);
         sprite_.setPosition(positionComponent_->getX(), positionComponent_->getY());
         ev2->getWindow()->draw(sprite_);

@@ -30,14 +30,14 @@ void Game::start() {
             // Pass the event to all entities
             Event sfEvent(&ev);
             for (auto i = entities_.begin(); i != entities_.end(); i++) {
-                (*i)->processEvent(&sfEvent);
+                (*i)->processEvent(typeid(sfEvent), &sfEvent);
             }
         }
 
         // Draw
         window_->clear();
         for (auto i = entities_.begin(); i != entities_.end(); i++) {
-            (*i)->processEvent(&drawEvent);
+            (*i)->processEvent(typeid(drawEvent), &drawEvent);
         }
         window_->display();
     }

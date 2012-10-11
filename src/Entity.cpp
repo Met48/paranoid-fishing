@@ -1,6 +1,7 @@
 #include "Entity.h"
 
 #include <memory>
+#include <typeinfo>
 
 bool Entity::hasAttribute(std::string name) {
     auto i = attributes_.find(name);
@@ -35,9 +36,9 @@ std::shared_ptr<GameComponent> Entity::addBehavior(std::shared_ptr<GameComponent
     return component;
 }
 
-void Entity::processEvent(Event *ev) {
+void Entity::processEvent(const std::type_info &type, Event *ev) {
     // Only behaviors need to see this events
     for (auto i = behaviors_.begin(); i != behaviors_.end(); i++) {
-        (*i)->processEvent(ev);
+        (*i)->processEvent(type, ev);
     }
 }

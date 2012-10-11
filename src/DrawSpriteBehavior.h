@@ -31,7 +31,7 @@ public:
     void setImage(sf::Texture tex);
     void setImage(sf::Sprite tex);
 
-    virtual void processEvent(Event *ev);
+    virtual void processEvent(const std::type_info &type, Event *ev);
 };
 
 #endif

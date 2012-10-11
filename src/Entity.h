@@ -3,6 +3,7 @@
 
 #include <list>
 #include <string>
+#include <typeinfo>
 
 #include "Event.h"
 #include "GameComponent.h"
@@ -20,7 +21,7 @@ public:
     std::shared_ptr<GameComponent> addBehavior(GameComponent *component);
     std::shared_ptr<GameComponent> addBehavior(std::shared_ptr<GameComponent> component);
 
-    void processEvent(Event *ev);
+    void processEvent(const std::type_info &type, Event *ev);
 };
 
 #endif

@@ -2,6 +2,7 @@
 #define GAME_COMPONENT_H
 
 #include <memory>
+#include <typeinfo>
 
 #include <SFML/Graphics.hpp>
 
@@ -21,7 +22,7 @@ public:
         parent_ = parent;
     }; */
 
-    virtual void processEvent(Event *ev) { };
+    virtual void processEvent(const std::type_info &type, Event *ev) { };
 };
 
 #endif
