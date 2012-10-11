@@ -6,6 +6,7 @@
 #include "Entity.h"
 #include "Vector2Attribute.h"
 #include "DrawSpriteBehavior.h"
+#include "PlayerMovementBehavior.h"
 #include <memory>
 
 // Tutorial SFML test script
@@ -17,8 +18,10 @@ int main() {
 
     // Add example entity
     auto ent = std::make_shared<Entity>();
-    ent->addAttribute("position", new Vector2Attribute(&*ent,0, 0));
+    ent->addAttribute("position", new Vector2Attribute(&*ent, 0, 0));
+	ent->addAttribute("velocity", new Vector2Attribute(&*ent, 0, 0));
     ent->addBehavior(new DrawSpriteBehavior(&*ent, "test.png"));
+	ent->addBehavior(new PlayerMovementBehavior(&*ent, 100));
 
     game.addEntity(ent);
 

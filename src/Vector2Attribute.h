@@ -19,6 +19,13 @@ public:
         y_ = y;
     };
 
+	void setX(float x) {
+		x_ = x;
+	};
+	void setY(float y) {
+		y_ = y;
+	};
+
     float getX() {
         return x_;
     };
