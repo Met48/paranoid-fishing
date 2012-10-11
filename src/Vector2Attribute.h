@@ -18,12 +18,22 @@ public:
         x_ = x;
         y_ = y;
     };
-
 	void setX(float x) {
 		x_ = x;
 	};
 	void setY(float y) {
 		y_ = y;
+	};
+
+	void addValue(float dX, float dY) {
+		x_ += dX;
+		y_ += dY;
+	};
+	void addX(float dX) {
+		x_ += dX;
+	};
+	void addY(float dY) {
+		y_ += dY;
 	};
 
     float getX() {
