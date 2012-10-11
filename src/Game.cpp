@@ -2,6 +2,7 @@
 
 #include "Event.h"
 #include "DrawEvent.h"
+#include "TickEvent.h"
 
 Game::Game(int width, int height, const char *title) {
     width_ = width;
@@ -17,6 +18,7 @@ sf::RenderWindow* Game::getWindow() {
 
 void Game::start() {
     DrawEvent drawEvent(&*window_);  // TODO: Bit of a hack
+	sf::Clock clock;
     while (window_->isOpen())
     {
         sf::Event ev;
@@ -34,8 +36,15 @@ void Game::start() {
             }
         }
 
-        // Draw
         window_->clear();
+
+		// Tick
+		TickEvent tickEvent(clock.restart());  // restart returns the elapsed time and resets the clock
+		for (auto i = entities_.begin(); i != entities_.end(); i++) {
+            (*i)->processEvent(typeid(tickEvent), &tickEvent);
+        }
+
+		// Draw
         for (auto i = entities_.begin(); i != entities_.end(); i++) {
             (*i)->processEvent(typeid(drawEvent), &drawEvent);
         }
